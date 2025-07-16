@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Algo especial...</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#fdeff9, #fff1eb);
+      text-align: center;
+      padding: 50px;
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+    }
+    #pedido, #senha, #senhaReveal, #segredo {
+      display: none;
+      margin-top: 40px;
+    }
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .btn:hover {
+      background-color: #ff85c1;
+    }
+    .heart {
+      font-size: 48px;
+      animation: pulse 1s infinite;
+      color: #ff69b4;
+      margin-bottom: 20px;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="inicio">
+    <h2>Oi, minha princesa</h2>
+
+    <p>Eu fico impressionado toda vez que penso em como a gente se conheceu.</p>
+    <p>Parecia que o universo inteiro tava empurrando a gente um pro outro.</p>
+
+    <p>Era uma terça-feira. Eu odeio sair de casa. Mas meu professor disse que valeria ponto uma palestra num barzinho no centro.<br>
+    O João Lucas, que normalmente estaria ocupado, quis ir comigo.</p>
+
+    <p>Lá, a Kamilly mandou mensagem dizendo que tava no Grupiar... e que você tava com ela.<br>
+    A gente decidiu ir pra comprar chopp de vinho. Cheguei lá, e a palestra foi cancelada.<br>
+    E, olha, ainda bem.</p>
+
+    <p>Porque foi ali que eu te conheci. E antes que eu conseguisse planejar qualquer coisa na minha cabeça,<br>
+    você, do seu jeitinho, só me beijou.<br>
+    Desde então, eu não consigo passar um dia sem pensar em você.</p>
+
+    <p>Eu amo nossos dias juntos.<br>
+    Amo o café da manhã na cama.<br>
+    Amo o jeito que você fala, e os seus sorrisos — cada um deles diferente.<br>
+    Amo suas covinhas que só aparecem em momentos bem específicos.<br>
+    Amo seus olhos, que me passam uma paz que nenhuma outra coisa no mundo consegue.</p>
+
+    <p>Mas o que eu mais amo...<br>
+    É como você me faz sentir eu mesmo.<br>
+    Sem filtros. Sem máscaras.</p>
+
+    <p>Eu sou mais eu quando estou com você.<br>
+    E amo que você me ama exatamente assim.</p>
+
+    <p>Acordar do seu lado todos os dias é sempre uma escolha — e eu sempre escolho você.</p>
+
+    <p><strong>Hoje, quero tornar isso oficial...</strong></p>
+
+    <button class="btn" onclick="mostrarPedido()">Continuar</button>
+  </div>
+
+  <div id="pedido">
+    <div class="heart">💖</div>
+    <h1>Você quer namorar comigo?</h1>
+    <button class="btn" onclick="gerarSenha()">Sim, seu boboca 😳</button>
+    <button class="btn" onclick="mostrarSegredo()">Segredo 🤭</button>
+  </div>
+
+  <div id="segredo">
+    <h2>Não é assim, jacaré 🐊</h2>
+    <p>Vai ter que escolher direitinho agora:</p>
+    <button class="btn" onclick="gerarSenha()">Sim, quero muito 💕</button>
+    <button class="btn" onclick="gerarSenha()">Sim, eu quero 😍</button>
+  </div>
+
+  <div id="senha">
+    <h2>Perfeito! Agora fale essa senha em voz alta para receber uma surpresa:</h2>
+    <div id="senhaReveal" style="font-size: 24px; font-weight: bold; margin-top: 20px;"></div>
+  </div>
+
+  <script>
+    let senhaGerada = "";
+
+    function mostrarPedido() {
+      document.getElementById('inicio').style.display = 'none';
+      document.getElementById('pedido').style.display = 'block';
+    }
+
+    function gerarSenha() {
+      senhaGerada = gerarPalavraAleatoria();
+      document.getElementById('pedido').style.display = 'none';
+      document.getElementById('segredo').style.display = 'none';
+      document.getElementById('senha').style.display = 'block';
+      document.getElementById('senhaReveal').style.display = 'block';
+      document.getElementById('senhaReveal').innerText = `"${senhaGerada}"`;
+    }
+
+    function mostrarSegredo() {
+      document.getElementById('pedido').style.display = 'none';
+      document.getElementById('segredo').style.display = 'block';
+    }
+
+    function gerarPalavraAleatoria() {
+      const palavras = ["Dinossauro", "Jacaré Albino", "Leão de Asa"];
+      return palavras[Math.floor(Math.random() * palavras.length)];
+    }
+  </script>
+
+</body>
+</html>
